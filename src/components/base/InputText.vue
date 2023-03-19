@@ -11,10 +11,6 @@ const props = defineProps({
     type: String,
     default: undefined
   },
-  color: {
-    type: String,
-    default: undefined
-  },
   placeHolder: {
     type: String,
     default: undefined
@@ -62,16 +58,16 @@ watch(() => props.value, (newValue) => {
   <v-text-field
     v-if="type === 'password'"
     v-model="data.input"
-    :color="color"
     :label="label"
     :placeholder="placeHolder"
     :type="data.showPassword ? 'text' : 'password'"
     :outlined="outlined"
     :success="isValid === true"
     :error="isValid === false">
-    <template #append>
+    <template #append-inner>
       <base-btn
         small
+        :hide-from-tab="true"
         @click="data.showPassword = !data.showPassword">
         {{ data.showPassword ? 'hide' : 'show' }}
       </base-btn>
@@ -81,7 +77,6 @@ watch(() => props.value, (newValue) => {
   <v-text-field
     v-else
     v-model="data.input"
-    :color="color"
     :label="label"
     :placeholder="placeHolder"
     :type="type"
