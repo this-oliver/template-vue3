@@ -57,6 +57,10 @@ const props = defineProps({
   to: {
     type: String,
     default: undefined
+  },
+  hideFromTab: {
+    type: Boolean,
+    default: undefined
   }
 });
 
@@ -87,6 +91,14 @@ const getButtonSize: ComputedRef<ButtonSize> = computed(() => {
   }
 });
 
+const getTabIndex = computed(() => {
+  if (props.hideFromTab) {
+    return '-1';
+  } else {
+    return undefined;
+  }
+});
+
 function handleClick() {
   // emit click event
   emit('click')
@@ -96,16 +108,17 @@ function handleClick() {
 <template>
   <v-btn
     flat
-    :variant="getButtonStyle"
+    :icon="props.icon"
     :elevation="props.elevation"
     :color="props.color"
-    :size="getButtonSize"
     :block="props.block"
-    :rounded="props.rounded"
-    :prepend-icon="props.icon"
     :disabled="props.disabled"
+    :rounded="props.rounded"
     :to="props.to"
-    class="pa-2"
+    :size="getButtonSize"
+    :variant="getButtonStyle"
+    :tabindex="getTabIndex"
+    class="pa-1"
     @click="handleClick()">
     <slot />
   </v-btn>
