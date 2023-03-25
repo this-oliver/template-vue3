@@ -81,7 +81,8 @@ const getActions: ComputedRef<ActionItem[]> = computed(() => {
     :subtitle="props.subtitle"
     :flat="props.flat"
     :color="props.color"
-    :variant="getCardStyle" >
+    :variant="getCardStyle"
+    class="pa-2">
     <slot />
 
     <template
