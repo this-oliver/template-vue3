@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
-import BaseBtn from './BaseBtn.vue';
+import { reactive, watch } from 'vue'
+import BaseBtn from './BaseBtn.vue'
 
 const props = defineProps({
   value: {
@@ -19,7 +19,7 @@ const props = defineProps({
     type: String,
     default: 'text',
     validator: (value: string) => {
-      return [ 'text', 'password' ].includes(value);
+      return [ 'text', 'password' ].includes(value)
     }
   },
   outlined: {
@@ -30,29 +30,34 @@ const props = defineProps({
     type: Boolean || null,
     default: null
   }
-});
+})
 
-const emits = defineEmits([ 'input' ]);
+const emits = defineEmits([ 'input' ])
 
 const data = reactive({
   input: null as unknown as string,
   showDateMenu: false,
   showPassword: false
-});
+})
 
-function setData(value: string){
-  data.input = value;
+function setData(value: string) {
+  data.input = value
 }
 
-watch(() => data.input, (newInput) => {
-  emits('input', newInput);
-});
+watch(
+  () => data.input,
+  (newInput) => {
+    emits('input', newInput)
+  }
+)
 
-watch(() => props.value, (newValue) => {
-  setData(newValue);
-});
+watch(
+  () => props.value,
+  (newValue) => {
+    setData(newValue)
+  }
+)
 </script>
-
 
 <template>
   <v-text-field
@@ -67,6 +72,7 @@ watch(() => props.value, (newValue) => {
     <template #append-inner>
       <base-btn
         small
+        color="grey"
         :hide-from-tab="true"
         @click="data.showPassword = !data.showPassword">
         {{ data.showPassword ? 'hide' : 'show' }}
@@ -82,5 +88,5 @@ watch(() => props.value, (newValue) => {
     :type="type"
     :outlined="outlined"
     :success="isValid === true"
-    :error="isValid === false" />
+    :error="isValid === false"/>
 </template>
