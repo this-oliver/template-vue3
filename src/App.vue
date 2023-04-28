@@ -12,10 +12,18 @@ import AppFooter from './components/AppFooter.vue';
   <v-app>
     <app-nav />
     <app-sidebar />
-    <app-notification />
     
     <v-main>
-      <router-view />
+      <app-notification />
+      <v-container>
+        <v-row justify="center">
+          <v-col
+            cols="11"
+            md="10">
+            <router-view />
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   
     <app-footer />
