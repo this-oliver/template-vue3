@@ -3,12 +3,14 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useDisplay } from 'vuetify'
 import { useSidebarStore } from '@/stores'
+import { useNotification } from '@/composables/useNotification';
 import BaseBtn from './base/BaseBtn.vue';
 import AppLogo from './AppLogo.vue';
 
 const router = useRouter();
 const drawer = useSidebarStore();
 const { name } = useDisplay();
+const { notify } = useNotification();
 
 const options = [
   { 
@@ -20,13 +22,13 @@ const options = [
   { 
     label: 'login',
     action: () => {
-      console.log('login');
+      notify('Nav Bar', 'Login clicked', 'success')
     } 
   },
   { 
     label: 'register',
     action: () => {
-      console.log('register')
+      notify('Nav Bar', 'Register clicked', 'success')
     }
   }
 ]
