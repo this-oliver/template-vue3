@@ -28,14 +28,14 @@ const isSmallScreen = computed(() => {
       @click="drawer.toggle" />
 
     <router-link
-      class="bar-logo"
+      class="bar-logo plain"
       to="/">
       <app-logo />
     </router-link>
 
     <v-spacer />
 
-    <div v-if="!isSmallScreen">
+    <div v-if="!isSmallScreen" >
       <base-btn
         v-for="option in navigation.options"
         :key="option.label"
@@ -60,5 +60,11 @@ const isSmallScreen = computed(() => {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media (min-width: 800px) {
+  .bar-container{
+    padding: 0 2rem;
+  }
 }
 </style>
