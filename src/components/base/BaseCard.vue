@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import type { PropType, ComputedRef } from 'vue';
 import BaseBtn from '@/components/base/BaseBtn.vue';
+import type { ComputedRef, PropType } from 'vue';
+import { computed } from 'vue';
 
 /**
  * Actions to be displayed in the card footer.
@@ -33,7 +33,7 @@ const props = defineProps({
   },
   flat: {
     type: Boolean,
-    default: true
+    default: undefined
   },
   plain: {
     type: Boolean,
@@ -45,7 +45,7 @@ const props = defineProps({
   },
   outlined: {
     type: Boolean,
-    default: true
+    default: undefined
   },
   rounded: {
     type: String,
@@ -73,10 +73,8 @@ const getCardStyle: ComputedRef<NonNullable<CardStyle> | undefined> = computed((
     return 'plain';
   } else if(props.tonal === true){
     return 'tonal';
-  } else if (props.flat === true) {
-    return 'flat'
   } else {
-    return undefined;
+    return 'flat'
   }
 });
 

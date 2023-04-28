@@ -3,9 +3,8 @@ import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 
 const props = defineProps({
-  color: { type: String, default: 'primary' },
+  color: { type: String, default: undefined },
   block: { type: Boolean, default: undefined },
-  elevation: { type: String, default: undefined },
   /* sizing */
   small: { type: Boolean, default: undefined },
   large: { type: Boolean, default: undefined },
@@ -24,7 +23,7 @@ const props = defineProps({
 
 const emit = defineEmits([ 'click' ])
 
-type ButtonStyle = 'outlined' | 'tonal' | 'plain' | 'text' | 'elevated'
+type ButtonStyle = 'outlined' | 'tonal' | 'plain' | 'text' | 'flat'
 const getButtonStyle: ComputedRef<ButtonStyle | undefined> = computed(() => {
   if (props.outlined === true) {
     return 'outlined'
@@ -35,7 +34,7 @@ const getButtonStyle: ComputedRef<ButtonStyle | undefined> = computed(() => {
   } else if (props.tonal === true) {
     return 'tonal'
   } else {
-    return 'elevated'
+    return 'flat'
   }
 })
 
@@ -58,9 +57,7 @@ function handleClick() {
 
 <template>
   <v-btn
-    flat
     :variant="getButtonStyle"
-    :elevation="props.elevation"
     :color="props.color"
     :size="getButtonSize"
     :block="props.block"
