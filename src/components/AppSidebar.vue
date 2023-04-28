@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useSidebarStore, useNavigationStore } from '@/stores'
+import { useNavigationStore, useSidebarStore } from '@/stores';
+import ThemeBtn from './btns/ThemeBtn.vue';
 
 const drawer = useSidebarStore();
 const navigation = useNavigationStore();
@@ -14,8 +15,15 @@ const navigation = useNavigationStore();
         :key="option.label"
         :to="option.to"
         @click="option.action">
+        <template v-slot:prepend>
+          <v-icon :icon="option.icon"></v-icon>
+        </template>
+
+
         <v-list-item-title>{{ option.label }}</v-list-item-title>
       </v-list-item>
+      
+      <theme-btn list-mode />
     </v-list>
   </v-navigation-drawer>
 
