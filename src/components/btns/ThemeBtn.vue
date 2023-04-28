@@ -37,7 +37,7 @@ function toggleTheme() {
 
   <base-btn
     v-else
-    text
+    plain
     @click="toggleTheme"
     class="mx-1">
     <v-icon :icon="icon"></v-icon>

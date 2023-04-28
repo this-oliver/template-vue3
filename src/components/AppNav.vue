@@ -39,7 +39,7 @@ const isSmallScreen = computed(() => {
       <base-btn
         v-for="option in navigation.options"
         :key="option.label"
-        text
+        plain
         :to="option.to"
         class="mx-1"
         @click="option.action">
