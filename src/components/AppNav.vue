@@ -1,37 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
 import { useDisplay } from 'vuetify'
-import { useSidebarStore } from '@/stores'
-import { useNotification } from '@/composables/useNotification';
+import { useSidebarStore, useNavigationStore } from '@/stores'
 import BaseBtn from './base/BaseBtn.vue';
 import AppLogo from './AppLogo.vue';
 
-const router = useRouter();
 const drawer = useSidebarStore();
-const { name } = useDisplay();
-const { notify } = useNotification();
+const navigation = useNavigationStore();
 
-const options = [
-  { 
-    label: 'about',
-    action: () => {
-      router.push('/about')
-    } 
-  },
-  { 
-    label: 'login',
-    action: () => {
-      notify('Nav Bar', 'Login clicked', 'success')
-    } 
-  },
-  { 
-    label: 'register',
-    action: () => {
-      notify('Nav Bar', 'Register clicked', 'success')
-    }
-  }
-]
+const { name } = useDisplay();
 
 const isSmallScreen = computed(() => {
   return name.value === 'xs' || name.value === 'sm';
@@ -49,15 +26,20 @@ const isSmallScreen = computed(() => {
       v-if="isSmallScreen"
       @click="drawer.toggle" />
 
-    <app-logo class="bar-logo" />
+    <router-link
+      class="bar-logo"
+      to="/">
+      <app-logo />
+    </router-link>
 
     <v-spacer />
 
     <div v-if="!isSmallScreen">
       <base-btn
-        v-for="option in options"
+        v-for="option in navigation.options"
         :key="option.label"
         class="mx-1"
+        :to="option.to"
         @click="option.action">
         {{ option.label }}
       </base-btn>
