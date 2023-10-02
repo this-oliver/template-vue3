@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
 const props = defineProps({
-  title: {
-    type: String,
-    defualt: undefined
-  }
+	title: {
+		type: String,
+		defualt: undefined
+	}
 });
 </script>
 
@@ -18,7 +18,7 @@ const props = defineProps({
       <h1>{{ props.title }}</h1>
     </v-col>
 
-    <v-divider class="border-opacity-0"></v-divider>
+    <v-divider class="border-opacity-0" />
 
     <v-col>
       <slot />

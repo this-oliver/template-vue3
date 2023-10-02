@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Toaster } from 'vue-sonner'
+import { Toaster } from 'vue-sonner';
 
 type PositionType = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
@@ -12,5 +12,5 @@ const expand = ref<boolean>(false);
 <template>
   <toaster
     :position="position"
-    :expand="expand"/>
+    :expand="expand" />
 </template>

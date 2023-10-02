@@ -1,21 +1,21 @@
 <script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue';
+import { useTheme } from 'vuetify/lib/framework.mjs';
 import BaseBtn from '@/components/base/BaseBtn.vue';
 import BaseCard from '@/components/base/BaseCard.vue';
 import BasePage from '@/components/base/BasePage.vue';
-import { onMounted, reactive, ref } from 'vue';
-import { useTheme } from 'vuetify/lib/framework.mjs';
 
 const vuetifyTheme = useTheme();
 
-const colors = ref<string[]>([ 'primary', 'secondary', 'warning', 'info', 'success', 'error' ]);
+const colors = ref<string[]>(['primary', 'secondary', 'warning', 'info', 'success', 'error']);
 
 const theme = reactive({
-  primary: '' as string,
-  secondary: '' as string,
-  warning: '' as string,
-  info: '' as string,
-  success: '' as string,
-  error: '' as string
+	primary: '' as string,
+	secondary: '' as string,
+	warning: '' as string,
+	info: '' as string,
+	success: '' as string,
+	error: '' as string
 });
 
 const loadBtn = ref<boolean>(false);
@@ -31,62 +31,62 @@ const flatCard = ref<boolean>(false);
 const plainCard = ref<boolean>(false);
 
 const btnOptions = ref([
-  {
-    label: 'Loading',
-    value: loadBtn
-  },
-  {
-    label: 'Outlined',
-    value: outlineBtn
-  },
-  {
-    label: 'Flat',
-    value: flatBtn
-  },
-  {
-    label: 'Plain',
-    value: plainBtn
-  },
-  {
-    label: 'Text',
-    value: textBtn
-  },
-  {
-    label: 'Disabled',
-    value: disabledBtn
-  }
-])
+	{
+		label: 'Loading',
+		value: loadBtn
+	},
+	{
+		label: 'Outlined',
+		value: outlineBtn
+	},
+	{
+		label: 'Flat',
+		value: flatBtn
+	},
+	{
+		label: 'Plain',
+		value: plainBtn
+	},
+	{
+		label: 'Text',
+		value: textBtn
+	},
+	{
+		label: 'Disabled',
+		value: disabledBtn
+	}
+]);
 
 const cardOptions = ref([
-  {
-    label: 'Loading',
-    value: loadCard
-  },
-  {
-    label: 'Outlined',
-    value: outlineCard
-  },
-  {
-    label: 'Flat',
-    value: flatCard
-  },
-  {
-    label: 'Plain',
-    value: plainCard
-  }
-])
+	{
+		label: 'Loading',
+		value: loadCard
+	},
+	{
+		label: 'Outlined',
+		value: outlineCard
+	},
+	{
+		label: 'Flat',
+		value: flatCard
+	},
+	{
+		label: 'Plain',
+		value: plainCard
+	}
+]);
 
-function getColor(color: string) {
-  return (theme as any)[color];
+function getColor (color: string) {
+	return (theme as any)[color];
 }
 
 onMounted(() => {
-  theme.primary = vuetifyTheme.current.value.colors.primary;
-  theme.secondary = vuetifyTheme.current.value.colors.secondary;
-  theme.warning = vuetifyTheme.current.value.colors.warning;
-  theme.info = vuetifyTheme.current.value.colors.info;
-  theme.success = vuetifyTheme.current.value.colors.success;
-  theme.error = vuetifyTheme.current.value.colors.error;
+	theme.primary = vuetifyTheme.current.value.colors.primary;
+	theme.secondary = vuetifyTheme.current.value.colors.secondary;
+	theme.warning = vuetifyTheme.current.value.colors.warning;
+	theme.info = vuetifyTheme.current.value.colors.info;
+	theme.success = vuetifyTheme.current.value.colors.success;
+	theme.error = vuetifyTheme.current.value.colors.error;
 });
 </script>
 
@@ -97,7 +97,7 @@ onMounted(() => {
         <h2>Theme</h2>
       </v-col>
 
-      <v-divider class="border-opacity-25"></v-divider>
+      <v-divider class="border-opacity-25" />
 
       <v-col
         v-for="color in colors"
@@ -124,7 +124,7 @@ onMounted(() => {
         </base-btn>
       </v-col>
 
-      <v-divider class="border-opacity-25"></v-divider>
+      <v-divider class="border-opacity-25" />
 
       <v-col
         v-for="color in colors"
@@ -137,7 +137,9 @@ onMounted(() => {
           :plain="plainBtn"
           :text="textBtn"
           :disabled="disabledBtn"
-          class="button">{{ color }}</base-btn>
+          class="button">
+          {{ color }}
+        </base-btn>
       </v-col>
     </v-row>
 
@@ -158,7 +160,7 @@ onMounted(() => {
         </base-btn>
       </v-col>
 
-      <v-divider class="border-opacity-25"></v-divider>
+      <v-divider class="border-opacity-25" />
 
       <v-col
         v-for="color in colors"
@@ -182,8 +184,6 @@ onMounted(() => {
         </base-card>
       </v-col>
     </v-row>
-
-
   </base-page>
 </template>
 

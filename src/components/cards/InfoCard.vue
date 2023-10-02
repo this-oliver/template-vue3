@@ -2,20 +2,20 @@
 import BaseCard from '@/components/base/BaseCard.vue';
 
 const props = defineProps({
-  message: {
-    type: String,
-    required: true
-  },
+	message: {
+		type: String,
+		required: true
+	},
 
-  htmlIsh: {
-    type: Boolean,
-    default: false
-  },
+	htmlIsh: {
+		type: Boolean,
+		default: false
+	},
 
-  color: {
-    type: String,
-    default: 'primary'
-  }
+	color: {
+		type: String,
+		default: 'primary'
+	}
 });
 </script>
 

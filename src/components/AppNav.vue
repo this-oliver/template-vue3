@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useNavigationStore, useSidebarStore } from '@/stores';
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
 import AppLogo from './AppLogo.vue';
 import BaseBtn from './base/BaseBtn.vue';
 import ThemeBtn from './btns/ThemeBtn.vue';
+import { useNavigationStore, useSidebarStore } from '@/stores';
 
 const drawer = useSidebarStore();
 const navigation = useNavigationStore();
@@ -12,7 +12,7 @@ const navigation = useNavigationStore();
 const { name } = useDisplay();
 
 const isSmallScreen = computed(() => {
-  return name.value === 'xs' || name.value === 'sm';
+	return name.value === 'xs' || name.value === 'sm';
 });
 
 </script>
@@ -35,7 +35,7 @@ const isSmallScreen = computed(() => {
 
     <v-spacer />
 
-    <div v-if="!isSmallScreen" >
+    <div v-if="!isSmallScreen">
       <base-btn
         v-for="option in navigation.options"
         :key="option.label"

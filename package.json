@@ -2,16 +2,14 @@
   "name": "template-vue3",
   "description": "A template for Vue 3 projects with Vite, Vuetify, Vue Router, and Pinia.",
   "repository": "this-oliver/template-vue3",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
+    "lint": "eslint --ext .vue,.js,.ts --fix .",
     "bump": "npx fistbump"
   },
   "dependencies": {
@@ -23,6 +21,7 @@
     "vuetify": "^3.2.1"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^11.0.2",
